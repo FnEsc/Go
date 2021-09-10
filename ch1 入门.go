@@ -1,5 +1,5 @@
 // test
-package main
+package main1
 
 import (
 	"bufio"
