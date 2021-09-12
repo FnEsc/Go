@@ -1,5 +1,4 @@
-// test
-package main1
+package ch1
 
 import (
 	"bufio"
