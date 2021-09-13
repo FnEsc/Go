@@ -1,4 +1,4 @@
-package ch2
+package main
 
 import (
 	"fmt"
@@ -39,11 +39,25 @@ func main() {
 	i, z := 1, 2 // 如果是 i, j := 1, 2 则编译不通过
 	fmt.Println(i, z)
 
-	// http://books.studygolang.com/gopl-zh/ch2/ch2-03.html
 	// 2.3.2. 指针
+	x := 1
+	p := &x
+	fmt.Println(*p)
+	*p = 2
+	fmt.Println(x)
 
+	var x2, y2 int                                      // &x2 指向零值，是个有效变量
+	fmt.Println(&x2 == &x2, &x2 == &y2, &x2 == nil, x2) // true false false
+
+	fmt.Println(f2() == f2()) // "false"
+	// http://books.studygolang.com/gopl-zh/ch2/ch2-03.html
 }
 
 func fToC(f float64) float64 {
 	return (f - 32) * 5 / 9
+}
+
+func f2() *int {
+	v := 1
+	return &v
 }
