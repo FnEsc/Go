@@ -113,6 +113,7 @@ func main() {
 	// go 没有set类型，但是map中的key也是不相同的，可以用map实现类似set的功能。
 
 	// 4.4. 结构体
+	// 如果结构体成员名字是以大写字母开头的，那么该成员就是导出的
 	type Employee struct {
 		ID        int
 		Name      string
@@ -133,8 +134,13 @@ func main() {
 	(*employeeOfTheMonth).Position += "(add)"                // 等价语句
 	fmt.Println(dilbert.Position)                            // Senior (proactive team player)(add)
 
-	// gopl.io/ch4/treesort
-	// http://books.studygolang.com/gopl-zh/ch4/ch4-04.html
+	type Point struct{ X, Y int }
+	p := Point{1, 2}
+	fmt.Println(p)
+
+	// 如果结构体的全部成员都是可以比较的，那么结构体也是可以比较的，那样的话两个结构体将可以使用==或!=运算符进行比较。
+
+	// 结构体还可以包含结构体，需要传入结构体类型指针
 }
 
 func appendInt(x []int, y int) []int {
@@ -164,4 +170,41 @@ func equal2(x, y map[string]int) bool {
 		}
 	}
 	return true
+}
+
+// 二叉树的实现插入排序
+type tree struct {
+	value       int
+	left, right *tree
+}
+
+func Sort(values []int) {
+	var root *tree
+	for _, v := range values {
+		root = add(root, v)
+	}
+	appendValues(values[:0], root)
+}
+
+func appendValues(values []int, t *tree) []int {
+	if t != nil {
+		values = appendValues(values, t.left)
+		values = append(values, t.value)
+		values = appendValues(values, t.right)
+	}
+	return values
+}
+
+func add(t *tree, value int) *tree {
+	if t == nil {
+		t = new(tree)
+		t.value = value
+		return t
+	}
+	if value < t.value {
+		t.left = add(t.left, value)
+	} else {
+		t.right = add(t.right, value)
+	}
+	return t
 }
