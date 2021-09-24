@@ -14,7 +14,11 @@ func main() {
 	fmt.Printf("%T\n", zero)  // "func(int, int) int"
 
 	// 5.2 递归
-	// http://books.studygolang.com/gopl-zh/ch5/ch5-02.html
+
+	// 5.3 bare return
+	// 在函数声明时候明确声明的多个返回值，并且在或函数内变量有明确的变量名，即可省略 return 的多个名字
+
+	// 5.4 错误
 }
 
 func f(i, j, k int, s, t string) { /* 函数返回值列表可省略 */ }
