@@ -1,3 +1,4 @@
+// 在Go语言中，每一个并发的执行单元叫作一个goroutine
 package main
 
 func main() {
