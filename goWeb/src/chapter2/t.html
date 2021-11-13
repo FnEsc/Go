@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模版嵌套</title>
+</head>
+<body>
+        <h1>模版嵌套</h1>
+    <hr>
+        {{ template "ul.html" }}
+    <hr>
+        {{ template "ol.html" }}
+</body>
+</html>
+
+{{ define "ol.html" }}
+<h1>这是 ol.html </h1>
+<ul>
+    <li>I love Go</li>
+    <li>I love Java</li>
+    <li>I love Python</li>
+</ul>
+{{ end }}
