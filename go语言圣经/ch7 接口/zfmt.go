@@ -6,7 +6,9 @@ import (
 	"os"
 )
 
-func Fprintf(w io.Writer, format string, args ...interface{}) (int, error)
+func Fprintf(w io.Writer, format string, args ...interface{}) (int, error) {
+	return 0, nil
+}
 
 func Printf(format string, args ...interface{}) (int, error) {
 	return Fprintf(os.Stdout, format, args...)
